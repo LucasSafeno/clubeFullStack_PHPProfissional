@@ -49,7 +49,7 @@ function paramsFormat($uri, $params)
   }
 
   return $paramsData;
-}
+} // paramsFormat
 
 
 function router()
@@ -62,14 +62,18 @@ function router()
 
   $matchedUri = exactMathUriInArrayRoutes($uri, $routes);
 
+  $params = [];
   if (empty($matchedUri)) {
     $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
-    if (!empty($matchedUri)) {
-      $params = params($uri, $matchedUri);
-      $params = paramsFormat($uri, $params);
 
-      var_dump($params);
-      die();
-    }
+    $params = params($uri, $matchedUri);
+    $params = paramsFormat($uri, $params);
   }
+
+  if (!empty($matchedUri)) {
+    controller($matchedUri, $params);
+    return;
+  }
+
+  throw new Exception("Algo deu errado");
 }// router

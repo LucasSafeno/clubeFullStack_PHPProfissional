@@ -16,5 +16,5 @@ function controller($machtedUri, $params)
   if (!method_exists($controllerInstance, $method)) {
     throw new Exception("Method $method not found in controller $controller");
   }
-  $controllerInstance->$method($params);
+  return $controllerInstance->$method($params);
 } // controller

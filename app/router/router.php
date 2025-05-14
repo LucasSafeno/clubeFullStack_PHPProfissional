@@ -28,6 +28,19 @@ function regularExpressionMatchArrayRoutes($uri, $routes)
   );
 } // regularExpressionMatchArrayRoutes
 
+function params($uri, $matchedUri)
+{
+  if (!empty($matchedUri)) {
+    $machtedGetParams = array_keys($matchedUri[0]);
+    return array_diff(
+      explode('/', ltrim($uri, '/')),
+      explode('/', ltrim($machtedGetParams, '/')),
+    );
+  }
+  return [];
+} // params
+
+
 function router()
 {
   // get uri
@@ -36,12 +49,31 @@ function router()
   // verifica se a URI está dentro de algum dos indices do retorno da função routes
   $routes = routes();
 
+  $arr1 = [
+    'user',
+    '1',
+    'name',
+    'Lucas'
+  ];
+
+  $arr2 = [
+    'user',
+    '[0-9]+',
+    'name',
+    '[a-z]+'
+  ];
+
+  var_dump(array_diff($arr1, $arr2));
+  die();
+
   $matchedUri = exactMathUriInArrayRoutes($uri, $routes);
 
   if (empty($matchedUri)) {
     $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
+    if (!empty($matchedUri)) {
+      $params = params($uri, $matchedUri);
+      var_dump($params);
+      die();
+    }
   }
-
-
-  var_dump($matchedUri);
 }// router

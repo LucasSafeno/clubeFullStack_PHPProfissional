@@ -31,7 +31,7 @@ function regularExpressionMatchArrayRoutes($uri, $routes)
 function params($uri, $matchedUri)
 {
   if (!empty($matchedUri)) {
-    $machtedGetParams = array_keys($matchedUri[0]);
+    $machtedGetParams = array_keys($matchedUri)[0];
     return array_diff(
       explode('/', ltrim($uri, '/')),
       explode('/', ltrim($machtedGetParams, '/')),
@@ -39,6 +39,17 @@ function params($uri, $matchedUri)
   }
   return [];
 } // params
+
+function paramsFormat($uri, $params)
+{
+  $uri = explode('/', ltrim($uri, '/'));
+  $paramsData = [];
+  foreach ($params as $index => $param) {
+    $paramsData[$uri[$index - 1]] = $param;
+  }
+
+  return $paramsData;
+}
 
 
 function router()
@@ -63,16 +74,15 @@ function router()
     '[a-z]+'
   ];
 
-  var_dump(array_diff($arr1, $arr2));
-  die();
-
   $matchedUri = exactMathUriInArrayRoutes($uri, $routes);
 
   if (empty($matchedUri)) {
     $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
     if (!empty($matchedUri)) {
       $params = params($uri, $matchedUri);
-      var_dump($params);
+      $params = paramsFormat($uri, $params);
+
+      var_dump($params['user']);
       die();
     }
   }

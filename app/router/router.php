@@ -60,20 +60,6 @@ function router()
   // verifica se a URI está dentro de algum dos indices do retorno da função routes
   $routes = routes();
 
-  $arr1 = [
-    'user',
-    '1',
-    'name',
-    'Lucas'
-  ];
-
-  $arr2 = [
-    'user',
-    '[0-9]+',
-    'name',
-    '[a-z]+'
-  ];
-
   $matchedUri = exactMathUriInArrayRoutes($uri, $routes);
 
   if (empty($matchedUri)) {
@@ -82,7 +68,7 @@ function router()
       $params = params($uri, $matchedUri);
       $params = paramsFormat($uri, $params);
 
-      var_dump($params['user']);
+      var_dump($params);
       die();
     }
   }

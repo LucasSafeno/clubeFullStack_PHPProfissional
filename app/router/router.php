@@ -1,17 +1,7 @@
 <?php
-function routes(): array
-{
-  return require "routes.php";
-} // routes
-
-
 function exactMathUriInArrayRoutes($uri, $routes)
 {
-  if (array_key_exists($uri, $routes)) {
-    return [$uri => $routes[$uri]];
-  }
-
-  return [];
+  return (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] :  [];
 } // excatMathUri
 
 
@@ -58,13 +48,14 @@ function router()
   $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
   // verifica se a URI está dentro de algum dos indices do retorno da função routes
-  $routes = routes();
+  $routes = require 'routes.php';
+  $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-  $matchedUri = exactMathUriInArrayRoutes($uri, $routes);
+  $matchedUri = exactMathUriInArrayRoutes($uri, $routes[$requestMethod]);
 
   $params = [];
   if (empty($matchedUri)) {
-    $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes);
+    $matchedUri = regularExpressionMatchArrayRoutes($uri, $routes[$requestMethod]);
 
     $params = params($uri, $matchedUri);
     $params = paramsFormat($uri, $params);

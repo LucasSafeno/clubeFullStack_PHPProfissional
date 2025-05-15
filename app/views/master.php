@@ -10,6 +10,10 @@
 </head>
 
 <body>
+  <div id="header">
+    <?php require '_partials/header.php'; ?>
+  </div>
+
   <h2><?= $title ?></h2>
 
   <div class="container">

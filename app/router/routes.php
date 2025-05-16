@@ -9,5 +9,6 @@ return [
     '/user/[a-z0-9]+' => 'User@show',
     '/user/[a-z0-9]+/name/[a-z]+' => 'User@create',
     '/login' => 'Login@index',
+    '/logout' => 'Login@destroy',
   ],
 ];

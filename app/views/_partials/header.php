@@ -5,5 +5,10 @@
 </ul>
 
 <div id="status_login">
-  bem-vindo, visitante
+  Bem-vindo,
+  <?php if (logged()): ?>
+    <?= user()->firstName  ?> | <a href="/logout">Logout</a>
+  <?php else: ?>
+    visitante.
+  <?php endif; ?>
 </div>

@@ -14,7 +14,27 @@ class User
 
     var_dump($user);
     die();
-  } // show
+  } //?s show
 
-  public function create($params) {}
+  public function create($params)
+  {
+    return [
+      'view' => 'create.php',
+      'data' => ['title' => 'Create User',],
+    ];
+  } //? create()
+
+  public function store()
+  {
+    $validate = validate([
+      'firstName' => 'required',
+      'lastName' => 'required',
+      'email' => 'email|unique',
+      'password' => 'required|maxlen',
+    ]);
+
+    if (!$validate) {
+      return redirect('/user/create');
+    }
+  } //? store()
 }

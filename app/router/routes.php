@@ -2,6 +2,7 @@
 return [
   'POST' => [
     '/login' => 'Login@store',
+    '/user/store' => 'User@store',
   ],
   'GET' => [
     '/' => 'Home@index',

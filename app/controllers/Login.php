@@ -36,7 +36,7 @@ class Login
     return redirect("/");
   } //? store()
 
-  public function destrou()
+  public function destroy()
   {
     unset($_SESSION[LOGGED]);
     return redirect("/");

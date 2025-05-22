@@ -7,6 +7,11 @@
   <input type="text" name="lastName" id="lastName" placeholder="Last Name">
   <?= getFlash('lastName') ?>
   <br>
+
+  <input type="text" name="age" id="age" maxlength="2" min="1" placeholder="Age">
+  <?= getFlash('age') ?>
+  <br>
+
   <input type="email" name="email" id="email" placeholder="Email">
   <?= getFlash('email') ?>
   <br>

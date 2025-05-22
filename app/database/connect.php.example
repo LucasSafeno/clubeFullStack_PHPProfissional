@@ -1,5 +1,6 @@
 <?php
 function connect()
 {
-  return new PDO("mysql:host=localhost;dbname=phpprof", "root", "");
+  return new PDO("mysql:host=localhost;dbname=phpprof", "root", "",[
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,);
 } // connect

@@ -19,7 +19,7 @@ class User
   public function create($params)
   {
     return [
-      'view' => 'create.php',
+      'view' => 'create',
       'data' => ['title' => 'Create User',],
     ];
   } //? create()

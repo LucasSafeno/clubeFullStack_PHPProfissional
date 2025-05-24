@@ -24,5 +24,8 @@
       "email": "lugnorio@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "league/plates": "^3.6",
+    "symfony/var-dumper": "^7.2"
+  }
 }

@@ -1,3 +1,4 @@
+<?php $this->layout('master', ['title' => $title]) ?>
 <?php if (!logged()): ?>
   <?= getFlash('message'); ?>
   <h2>Login</h2>

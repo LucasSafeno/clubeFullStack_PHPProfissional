@@ -63,7 +63,7 @@ function unique($field, $param)
     // var_dump("Chegamos aqui");
     // die();
   }
-  var_dump("Chegamos aqui fora if");
+  // var_dump("Chegamos aqui fora if");
   return $data;
 } //? unique()
 

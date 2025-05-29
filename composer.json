@@ -12,7 +12,8 @@
       "app/helpers/flash.php",
       "app/helpers/validate.php",
       "app/helpers/sessions.php",
-      "app/database/create.php"
+      "app/database/create.php",
+      "app/helpers/helpers.php"
     ],
     "psr-4": {
       "App\\": "app/"

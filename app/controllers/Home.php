@@ -6,8 +6,6 @@ class Home
 {
   public function index($params)
   {
-
-    dd(delete('users', ['id' => 34]));
     $users = all('users');
 
     return [
